@@ -112,6 +112,3 @@ plt.show()
 # plot_value_array(0, predictions_single, test_labels)
 # _ = plt.xticks(range(10), class_names, rotation=45)
 # print(np.argmax(predictions_single[0]))
-
-# https://colab.research.google.com/github/tensorflow/docs-l10n/blob/master/site/ko/tutorials/keras/classification.ipynb?hl=ko#scrollTo=lDFh5yF_CaXW
-# https://www.tensorflow.org/tutorials/keras/classification?hl=ko
