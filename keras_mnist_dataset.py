@@ -48,5 +48,5 @@ print(f"train_images[{image_index}]'s label : " + str(train_labels[image_index])
 
 # print image as a real image
 plt.title(train_labels[image_index])
-plt.imshow(train_images[image_index])
+plt.imshow(train_images[image_index], cmap='Greys')
 plt.show()
