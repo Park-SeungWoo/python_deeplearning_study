@@ -36,4 +36,4 @@ for rect in rects:
     cv2.putText(img, str(predicted_num[0]), (rect[0], rect[1]), font, 4, (0, 0, 255), 10)
 
 plt.imshow(img)
-plt.show()
+plt.show() 
