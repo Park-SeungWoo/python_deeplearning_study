@@ -68,4 +68,4 @@ acc_ax.plot(hist.history['val_accuracy'], 'g', label='val acc')
 acc_ax.set_ylabel('accuracy')
 acc_ax.legend(loc='upper left')
 
-plt.show()
+plt.show() 
