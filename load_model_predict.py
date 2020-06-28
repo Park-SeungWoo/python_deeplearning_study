@@ -1,17 +1,16 @@
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
 
 from keras.models import load_model
 
 model = load_model('mnist_CNN_test.h5')
 
-img = cv2.imread('handwriting_num.jpg')
+img = cv2.imread('numimage.jpg')
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # 모델이 흑백 이미지만을 predict할 수 있기때문에 변환
-img_blur = cv2.GaussianBlur(img_gray, (5, 5), 0)  # 사진을 찍으면서 발생한 숫자 라인의 끊김등을 블러로 처리
+img_blur = cv2.GaussianBlur(img_gray, (15, 15), 0)  # 사진을 찍으면서 발생한 숫자 라인의 끊김등을 블러로 처리
 
 # object들 detect하기
-ret, img_th = cv2.threshold(img_blur, 100, 230, cv2.THRESH_BINARY_INV)
+ret, img_th = cv2.threshold(img_blur, 100, 280, cv2.THRESH_BINARY_INV)
 contours, hierachy= cv2.findContours(img_th.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 rects = [cv2.boundingRect(each) for each in contours]
 print(rects)  # 각 숫자의 좌표
