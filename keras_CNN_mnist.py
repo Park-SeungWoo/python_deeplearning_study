@@ -17,23 +17,6 @@ epoch = 10
 print('train data amount : ' + str(len(train_images)))
 print('test data amount : ' + str(len(test_images)))
 
-# # 각각의 label이 있는 index의 모음을 list에 저장하여 dictionary에 label과 함께 저장
-# label_index_dict = dict()
-# for i in range(10):
-#     index_list = list()
-#     for index, item in enumerate(test_labels):
-#         if item == i:
-#             index_list.append(index)
-#     label_index_dict[i] = index_list
-#
-# # test 시 0~9까지 이미지를 하나씩 뽑아와 시각적으로 확인하기 위해 dict형식으로 이미지를 뽑아놓음
-# test_show_plt_images = dict()
-# for i in range(10):
-#     test_index_list = label_index_dict[i]
-#     idx = random.randrange(len(label_index_dict[i]) - 1)
-#     image_index = test_index_list[idx]
-#     test_show_plt_images[i] = image_index
-
 # 데이터 전처리
 # keras dataset의 mnist는 이미지의 픽셀 값이 0~255사이의 정수로 되어있어 0~1사이의 실수로 변환하며 28,28,1형태로 reshpe
 train_images = train_images.reshape(train_images.shape[0], 28, 28, 1).astype('float32') / 255
