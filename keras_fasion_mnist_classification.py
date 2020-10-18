@@ -1,4 +1,3 @@
-import tensorflow as tf
 from tensorflow import keras
 
 import numpy as np
@@ -9,11 +8,11 @@ fashion_mnist = keras.datasets.fashion_mnist
 
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
-# plt.figure()
-# plt.imshow(train_images[0])
-# plt.colorbar()
-# plt.grid(False)
-# plt.show()
+plt.figure()
+plt.imshow(train_images[0])
+plt.colorbar()
+plt.grid(False)
+plt.show()
 
 train_images = train_images / 255.0
 test_images = test_images / 255.0

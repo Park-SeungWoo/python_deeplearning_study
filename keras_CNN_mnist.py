@@ -3,6 +3,7 @@ from keras.layers import Dense, Flatten, Conv2D, AveragePooling2D, Dropout
 from keras.models import Sequential
 from keras.utils import np_utils
 import matplotlib.pyplot as plt
+import tensorflowjs as tfjs
 
 # mnist 데이터를 불러오고 train과 test로 나눔
 mnist_data = keras.datasets.mnist
@@ -36,11 +37,27 @@ model.add(AveragePooling2D(pool_size=(2, 2)))
 # Drop out을 25% 적용
 model.add(Dropout(0.25))
 # 특징추출이 끝난 2차원형태의 배열을 1차원으로 변환
+
+# model.add(Conv2D(20, kernel_size=(3, 3), input_shape=(28, 28, 1), activation='relu', padding='same', strides=1, kernel_initializer='he_normal'))
+# # model.add(AveragePooling2D(pool_size=(2, 2)))
+# model.add(Dropout(0.25))
+#
+# model.add(Conv2D(20, kernel_size=(3, 3), input_shape=(28, 28, 1), activation='relu', padding='same', strides=1, kernel_initializer='he_normal'))
+# model.add(AveragePooling2D(pool_size=(2, 2)))
+# model.add(Dropout(0.25))
+
 model.add(Flatten())
 # hidden layer 노드 100개 활성화 함수 relu
 model.add(Dense(100, activation='relu', kernel_initializer='he_normal'))
 # Drop out 25%
 model.add(Dropout(0.25))
+
+model.add(Dense(124, activation='relu', kernel_initializer='he_normal'))
+model.add(Dropout(0.3))
+
+model.add(Dense(100, activation='relu', kernel_initializer='he_normal'))
+model.add(Dropout(0.3))
+
 # 출력층 노드의 수는 미리 정했던 10으로 지정(0~9), 활성화 함수는 softmax사용
 model.add(Dense(class_num, activation='softmax', kernel_initializer='he_normal'))
 
@@ -50,8 +67,11 @@ model.summary()
 
 # hist에 학습을 시키면서 발생한 모든 정보를 dictionary로 담음, 여기엔 history 속성(학습 acc, 학습 loss, 테스트 acc, 테스트 loss)이 들어있음
 hist = model.fit(train_images, train_labels, batch_size=batch_size, epochs=epoch, validation_data=(test_images, test_labels))
+# fit 에서 verbose 1로 했을 때 각 데이터별로 학습되는진행표 보기 싫으면 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+#이런식으로 evaluate해서 verbose2로 놓고 보면 잘 나옴
 
-model.save('mnist_CNN_test.h5')
+model.save('model/mnist_CNN_test2.h5')
+# tfjs.converters.save_keras_model(model, './CNN_model')
 
 # loss, accuracy 시각화
 fig, loss_ax = plt.subplots()

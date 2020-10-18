@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 from keras.models import load_model
 
-model = load_model('mnist_CNN_test.h5')
+model = load_model('model/mnist_CNN_test.h5')
 
-img = cv2.imread('handwriting_num.jpg')
+img = cv2.imread('image/numimage2.jpg')
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # 모델이 흑백 이미지만을 predict할 수 있기때문에 변환
 img_blur = cv2.GaussianBlur(img_gray, (15, 15), 0)  # 사진을 찍으면서 발생한 숫자 라인의 끊김등을 블러로 처리
 
@@ -31,10 +31,11 @@ for rect in rects:
     predicted_num = model.predict_classes(test_num)
 
     # Draw the rectangles
-    cv2.rectangle(img, (rect[0], rect[1]), (rect[0] + rect[2], rect[1] + rect[3]), (50, 250, 150), 5)
+    cv2.rectangle(img, (rect[0], rect[1]), (rect[0] + rect[2], rect[1] + rect[3]), (255, 50, 50), 5)
 
     font = cv2.FONT_HERSHEY_SIMPLEX
-    cv2.putText(img, str(predicted_num[0]), (rect[0], rect[1]), font, 4, (0, 0, 255), 10)
+    cv2.putText(img, str(predicted_num[0]), (int((rect[0] * 2 + rect[2]) / 2 - 40), rect[1]), font, 4, (0, 0, 255), 10)
+    # 좌표는 좌상단 x,y와 좌상단됨 우하단 좌표가 좌상단 x, y로 부터 떨어진 정도로 저장됨 so, x = (LT.x + LT.x + (RB.x - LT.x)) / 2 - 40(40은 폰트의 크기의 반만큼 좌측으로 이동해 가운데로 갈 수 있게 함)
 
 plt.imshow(img)
 plt.show() 
