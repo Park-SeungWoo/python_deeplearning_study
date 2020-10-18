@@ -5,24 +5,24 @@
 > > * execution screen
 > > <img src="./image/checkdatas.png">
 > >
-> > * relative file
+> > * associated file
 > >   - keras_mnist_dataset.py
 >
 > ### CNN
-> > train model using Mnist dataset and detect handwriting number
+> > train model using Mnist dataset and detect handwritten number
 > > * execution screen
 > > <img src="./image/CNNexecution.png">
 > > 
-> > * relative files
+> > * associated files
 > >   - keras_CNN_mnist.py
-> >   - keras_model_predict.py
+> >   - load_model_predict.py
 >
 > ### Fashion mnist
 > > train model using Fashion mnist dataset and predict some datas.
 > > * execution screen
 > > <img src="./image/fashionmnistexecution.png">
 >
-> > * relative file
+> > * associated file
 > >   - keras_fashion_mnist_classification.py
 >
 > ### RNN
@@ -30,15 +30,15 @@
 > > * execution screen
 > > <img src="./image/RNNexecution.png">
 > > 
-> > * relative file
+> > * associated file
 > >   - rnn_model.py
 >
 > ### GAN
 > > I wanted to study GAN. but I can't make it..<br>
 > > I followed the GAN example, and I wrote same codes.
 > > I'll study more about GAN
-> > * relative file
-> >   - gam_make_gif.py
+> > * associated file
+> >   - gan_make_gif.py
 >
 > ### Plan
 > > I wanna study more techniques in deeplearning.
